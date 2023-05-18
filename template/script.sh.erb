@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd <%= context.working_dir %>
+
+spack load namd
+NAMD_ARGS="+p<%= context.num_tasks_per_node.blank? ? 1 : context.num_tasks_per_node.to_i %>"
+namd2 ${NAMD_ARGS} <%= context.input %> >> <%= context.output %> 2>&1

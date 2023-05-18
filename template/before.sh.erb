@@ -1,0 +1,19 @@
+# Export the spack function if it exists
+[[ $(type -t spack) == "function" ]] && export -f spack
+
+# Export compute node the script is running on
+export host="$(hostname)"
+
+# Find available port to run server on
+export port=$(find_port ${host})
+
+# Generate SHA1 encrypted password (requires OpenSSL installed)
+export password="$(create_passwd 16)"
+export RSTUDIO_PASSWORD="${password}"
+
+# create CSRF token
+<%-
+  require 'securerandom'
+  csrftoken=SecureRandom.uuid
+-%>
+export csrftoken="<%= csrftoken %>"

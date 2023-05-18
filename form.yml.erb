@@ -1,0 +1,64 @@
+<%-
+  reser_string = `scontrol --oneliner show reservations | tr ' ' '\n' | grep "ReservationName" | cut -f2 -d=`
+  reser_string = reser_string.strip
+-%>
+
+cluster: "tntech"
+
+form: 
+  - bc_account
+  - working_dir
+  - num_nodes
+  - num_tasks_per_node
+  - gbs_of_mem
+  - input
+  - output
+
+attributes:
+
+  num_nodes: 
+    widget: "number_field"
+    label: "Number of nodes"
+    help: |
+      Number of nodes (some partitions have limited amounts).    
+    min: 1
+    max: 40
+    step: 1
+
+  num_tasks_per_node:
+    widget: "number_field"
+    label: "Number of tasks per node"
+    help: |
+      Number of Tasks/Processes per Node. Defaults to 1.
+    min: 1
+    max: 96
+    step: 1 
+
+  gbs_of_mem:
+    widget: "number_field"
+    label: "Gigabytes (GB) of RAM"
+    help: |
+      Amount of Memory per node (limits change across nodes). Defaults to 2
+    min: 2
+    max: 890
+    step: 2
+
+  input:
+    widget: "text_field"
+    label: "Input File Name"
+    help: "Where the data is coming from. Example: benchmark.in" 
+
+  output:
+    widget: "text_field"
+    label: "Output File Name"
+    help: "Where the results will be going to. Example: benchmark.out" 
+
+  version:
+    widget: "select"
+
+  working_dir:
+    label: "Working Directory"
+    data-filepicker: true
+    data-target-file-type: dirs  # Valid values are: files, dirs, or both
+    readonly: false
+    help: "Select your project directory; defaults to $HOME"
