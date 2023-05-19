@@ -4,4 +4,4 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch NAMD on one or more nodes.
+  This app will launch NAMD on one node.

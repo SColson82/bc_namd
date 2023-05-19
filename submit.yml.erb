@@ -2,7 +2,7 @@
 <%-
   ppn = num_tasks_per_node.blank? ? 1 : num_tasks_per_node.to_i
   nodes = num_nodes.blank? ? 1 : num_nodes.to_i
-  mem = gbs_of_mem.blank? ? 8 : gbs_of_mem.to_i  
+  mem = gbs_of_mem.blank? ? 2 : gbs_of_mem.to_i  
 
   slurm_args = [ "--nodes", "#{nodes}", "--ntasks-per-node", "#{ppn}", "--mem", "#{mem}G",]
 -%>
@@ -10,7 +10,7 @@
 batch_connect:
   template: "basic"
   conn_params:
-    - csrftoken
+    - working_path
 script:
   accounting_id: <%= bc_account %>
   native:
