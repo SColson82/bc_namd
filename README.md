@@ -6,7 +6,7 @@ A simple example form for Tennessee Tech University's HPC Research Computing and
 
 [SPACK](https://github.com/spack/spack)
 
-[NAMD](https://github.com/nbcrrolls/namd)
+[NAMD](https://www.ks.uiuc.edu/Research/namd/)
 
 ![NAMD_Form](figures/NAMD_Form.PNG)
 
