@@ -1,3 +1,4 @@
+<%# Takes in user input for variable assignment to build the shell script. %>
 <%-
   reser_string = `scontrol --oneliner show reservations | tr ' ' '\n' | grep "ReservationName" | cut -f2 -d=`
   reser_string = reser_string.strip

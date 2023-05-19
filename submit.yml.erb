@@ -1,4 +1,5 @@
 ---
+<%# Takes user input from form.yml and sets variables for the script arguments. %>
 <%-
   ppn = num_tasks_per_node.blank? ? 1 : num_tasks_per_node.to_i
   nodes = num_nodes.blank? ? 1 : num_nodes.to_i

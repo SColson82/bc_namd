@@ -1,7 +1,9 @@
 #!/bin/bash
 
+<%# Moves in to assigned working directory received from form.yml %>
 cd <%= context.working_dir %>
 
+<%# Load NAMD package, set NAMD arguements, direct output to the specified file. %>
 spack load namd
 NAMD_ARGS="+p<%= context.num_tasks_per_node.blank? ? 1 : context.num_tasks_per_node.to_i %>"
 namd2 ${NAMD_ARGS} <%= context.input %> >> <%= context.output %> 2>&1
