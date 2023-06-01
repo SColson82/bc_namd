@@ -8,12 +8,16 @@ cluster: "tntech"
 
 form: 
   - bc_account
-  - working_dir
+<%- if not reser_string.empty? -%>
+  - reservation
+<%- end -%>
+  - work_dir
+  - input
+  - output
   - num_nodes
   - num_tasks_per_node
   - gbs_of_mem
-  - input
-  - output
+
 
 attributes:
 
@@ -54,8 +58,10 @@ attributes:
     label: "Output File Name"
     help: "Where the results will be going to (relative to the working directory field above). Example: benchmark.out" 
 
-  working_dir:
+  work_dir:
     label: "Working Directory"
     data-filepicker: true
+    cacheable: false
     data-target-file-type: dirs  # Valid values are: files, dirs, or both
-    help: "Select your project directory; defaults to $HOME"
+    value: <%= ENV['HOME'] %>
+    help: "Select your project directory; if that is your home directory, leave as is. </br>DO NOT LEAVE BLANK!"
