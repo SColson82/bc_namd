@@ -8,6 +8,11 @@
   base = work_dir.blank? ? ENV['HOME'] : work_dir
 
   slurm_args = [ "--nodes", "#{nodes}", "--ntasks-per-node", "#{ppn}", "--mem", "#{mem}G",]
+
+  if defined?(reservation) && reservation != "None"
+    slurm_args = slurm_args + [ "--reservation", reservation ]
+  end
+
 -%>
 
 batch_connect:
